@@ -1,0 +1,142 @@
+
+# Employee Management REST API
+
+A Java backend application for managing employee records using Spring Boot,
+Spring Data JPA, and PostgreSQL.
+
+## Features
+
+- Create an employee
+- Retrieve all employees
+- Retrieve an employee by ID
+- Update employee details
+- Delete an employee
+- Validate request data
+- Return appropriate HTTP status codes
+- Centralized error handling
+- Automated API integration tests
+
+## Tech Stack
+
+- Java 21
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- PostgreSQL
+- Bean Validation
+- Maven
+- JUnit 5 and MockMvc
+
+## Prerequisites
+
+- Java 21
+- Maven (or the included Maven Wrapper)
+- PostgreSQL for running the application
+
+## Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/shivakrishna-kvsk/employee-management-api.git
+   ```
+
+2. Open the project directory:
+
+   ```bash
+   cd employee-management-api
+   ```
+
+3. Configure your PostgreSQL connection in your local application
+   configuration. Do not commit database passwords or other secrets.
+
+4. Start the application:
+
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+
+   On Windows:
+
+   ```powershell
+   .\mvnw.cmd spring-boot:run
+   ```
+
+The API runs on `http://localhost:8080` by default.
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/employees` | Create an employee |
+| GET | `/api/employees` | Get all employees |
+| GET | `/api/employees/{id}` | Get an employee by ID |
+| PUT | `/api/employees/{id}` | Update an employee |
+| DELETE | `/api/employees/{id}` | Delete an employee |
+
+## Example Request
+
+### Create an employee
+
+`POST /api/employees`
+
+Content-Type: `application/json`
+
+```json
+{
+  "firstName": "Rahul",
+  "lastName": "Sharma",
+  "email": "rahul@example.com",
+  "salary": 45000
+}
+```
+
+Expected response: `201 Created`
+
+### Validation
+
+Employee names are required, email must have a valid format, and salary
+must be zero or greater.
+
+Invalid requests return `400 Bad Request`. Requests for missing employees
+return `404 Not Found`.
+
+## Run Automated Tests
+
+On macOS/Linux:
+
+```bash
+./mvnw test
+```
+
+On Windows:
+
+```powershell
+.\mvnw.cmd test
+```
+
+The tests use an in-memory H2 database and do not require your normal
+PostgreSQL database to be used for test data.
+
+## Project Structure
+
+```text
+src/
+├── main/
+│   ├── java/com/shivakrishna/employeemanagement/
+│   │   ├── controller/
+│   │   ├── entity/
+│   │   ├── exception/
+│   │   ├── repository/
+│   │   └── service/
+│   └── resources/
+└── test/
+    ├── java/
+    └── resources/
+```
+
+## Author
+
+Shiva Krishna
+
+GitHub: https://github.com/shivakrishna-kvsk
